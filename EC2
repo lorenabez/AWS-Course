@@ -1,1 +1,26 @@
+Diferença entre Interromper e Encerrar uma instância EC2
 
+Interromper (Stop): "Vou desligar agora, mas quero ligar de novo mais tarde exatamente do jeito que está." É uma pausa para economizar.
+
+Executar/Terminar (Terminate): "Acabou. Não vou usar mais isso. Pode apagar tudo." É um fim definitivo.
+
+1. Interromper uma Instância (Stop)
+Quando você interrompe uma instância, está essencialmente dividindo sua conta em duas partes:
+
+O que você NÃO PAGA mais
+✅ Custo de Computação (o principal custo):
+- CPU (vCPUs)
+- Memória (RAM)
+- Licenciamento de SO (Windows/SQL Server)
+✅ IP Público Elástico associado (se não estiver em uso):
+Na AWS, você paga apenas por IPs Elásticos que estão alocados mas não associados a uma instância running.
+
+O que você CONTINUA PAGANDO
+
+✅ Armazenamento dos Discos (Volumes EBS na AWS):
+- Disco principal (root volume)
+- Quaisquer discos adicionais (volumes de dados) anexados. Você paga pelo espaço alocado (ex.: 50 GB), mesmo que esteja vazio.
+✅ Snapshots (Backups):
+Se você tiver tirado snapshots dos seus discos, o armazenamento desses backups é cobrado.
+✅ IP Público Elástico (se estiver associado à instância parada):
+Em algumas nuvens, pode haver custo. Na AWS, se estiver associado, geralmente não há custo.
